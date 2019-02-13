@@ -33,4 +33,13 @@ class Game {
         return this.phrases[ranNum];
     }
 
+    /**
+     * starts the game
+     */
+    startGame(){
+        document.querySelector('#overlay').style.opacity = '0';
+        this.activePhrase = this.getRandomPhrase();
+        this.activePhrase.addPhraseToDisplay();
+    }
+
 }
