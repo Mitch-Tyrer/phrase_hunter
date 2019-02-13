@@ -15,11 +15,11 @@ class Game {
      */
     createPhrases() {
         let phrases = [];
-        phrases.push(new Phrase('May the Force be with you!'));
+        phrases.push(new Phrase('May the Force be with you'));
         phrases.push(new Phrase('Winter is Coming'));
         phrases.push(new Phrase('Veritas Aequitas'));
-        phrases.push(new Phrase('love'));
-        phrases.push(new Phrase('May the Force be with you!'));
+        phrases.push(new Phrase('Love'));
+        phrases.push(new Phrase('As you wish'));
 
         return phrases;
     }
