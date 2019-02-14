@@ -31,6 +31,7 @@ class Phrase {
         let exist = false
         let phrase = this.phrase.split('');
         phrase.filter(letters => {
+
             if(letters === letter){
                 this.showMatchedLetter(letter);
                 exist = true;

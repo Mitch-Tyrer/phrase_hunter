@@ -101,6 +101,7 @@ button {
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
+  
 }
 
 .space {
@@ -120,6 +121,16 @@ button {
   border-radius: 5px;
   -webkit-animation-duration: .5s;
   animation-duration: .5s;
+  animation: opacity .5s;
+}
+
+@keyframes opacity {
+  0%{
+    opacity: 0; 
+   }
+  100%{
+    opacity: 1;
+  }
 }
 
 
