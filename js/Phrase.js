@@ -23,4 +23,33 @@ class Phrase {
             phraseDiv.appendChild(phraseLI);
         });
     }
+    /**
+     * checks a users chosen letter against the phrase
+     * @param {string} letter - letter to be checked
+     */
+    checkLetter(letter){
+        let phrase = this.phrase.split('');
+        phrase.filter(letters => {
+            if(letters === letter){
+                this.showMatchedLetter(letter);
+            }
+        });
+        
+    }
+    /**
+     * shows chosen letter if it is in the phrase
+     * @param {string}  letter - letter to be displayed
+     */
+    showMatchedLetter(letter){
+        //select all select all of the letter DOM elements that have a 
+        //CSS class name that matches the selected letter and
+        //replace each selected element's `hide` CSS class with the `show` CSS class.
+        const list = document.querySelectorAll('.hide');
+        list.forEach(el => {
+            if(el.textContent === letter){
+                el.className = "show";
+            }
+        });
+
+    }
 }

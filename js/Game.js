@@ -42,4 +42,69 @@ class Game {
         this.activePhrase.addPhraseToDisplay();
     }
 
+    /**
+     * Handels user interaction
+     */
+    handleInteraction () {
+        // capture the chosen letter
+        // match letter against the phrase
+            //if a match display letter in phrase
+            //!== match remove a life
+        //check for a win
+            //win if the phrase is all revealed
+            //loss if no more lives
+        //displays a win a lose message
+    }
+    /**
+     * Check for a game win
+     * @return {boolean} true for win, false for loss
+     */
+    checkForWin(){
+        //check if all the letters are revealed
+        let hidden = document.querySelectorAll('.hide');
+        if(hidden.length === 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    /**
+     * Removes a life from the life counter
+     */
+    removeLife(){
+        // increment this.missed by one
+        this.missed += 1;
+        // changes heart image
+        let lives = document.querySelectorAll('.tries img');
+        if(this.missed < 5){
+            lives[(this.missed - 1)].src = 'images/lostHeart.png'
+        } else {
+            this.gameOver();
+        }
+        
+        
+        
+    }
+    /**
+     * Ends the game
+     * @returns {boolean} gameWon - whether or not a user has won or lost
+     */
+    gameOver(){
+        let phrase = document.querySelectorAll('.hide');
+        let overlay = document.querySelector('#overlay');
+        let msg = document.querySelector("#game-over-message");
+        
+        //displays original overlay
+        overlay.style.opacity = '1';
+            //depending on win or lose display apporpriate message in the h1
+            //changes the overlays start class to either win or lose class
+            if(phrase.length === 0){
+                msg.textContent = "YOU WIN!"
+                overlay.className = "win"
+            } else {
+                msg.textContent = "Better Luck Next Time!"
+                overlay.className = "lose"
+            }
+        
+    }
 }
