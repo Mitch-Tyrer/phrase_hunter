@@ -9,7 +9,9 @@ const start = () => {
     game.startGame();
 }
 
-startButton.addEventListener('click', () => start());
+startButton.addEventListener('click', () => {
+    $('#overlay').fadeToggle('slow', () => start());
+});
 
 
 keyboard.addEventListener('click', (e) => {
@@ -18,7 +20,7 @@ keyboard.addEventListener('click', (e) => {
 
 document.addEventListener('keydown', (e) => {
     if(e.which === 13 && overlay.style.display !== 'none'){
-        start();
+        $('#overlay').fadeToggle('slow', () => start());
     }
     for(let i = 0; i < keys.length; i++){
         if(e.key === keys[i].textContent){

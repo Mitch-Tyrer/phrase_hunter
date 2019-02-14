@@ -189,6 +189,7 @@ button {
 
 .win {
   background-color: var(--color-win);
+  animation: win-transition 5s infinite;
 }
 
 .win a {
@@ -197,8 +198,33 @@ button {
 
 .lose {
   background-color: #f5785f;
+  animation: lose-transition 5s infinite;
 }
 
 .lose a {
   color: var(--color-lose);
+}
+
+@keyframes win-transition {
+  0% {
+    background-color: var(--color-win);
+  }
+  50% {
+    background-color: #0df128;
+  }
+  100% {
+    background-color: var(--color-win);
+  }
+}
+
+@keyframes lose-transition {
+  0% {
+    background-color:  #f5785f;
+  }
+  50% {
+    background-color:  #fa2f07;
+  }
+  100% {
+    background-color:  #f5785f;
+  }
 }
