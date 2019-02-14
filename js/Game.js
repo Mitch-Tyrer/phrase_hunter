@@ -37,6 +37,7 @@ class Game {
      * starts the game
      */
     startGame(){
+        this.resetGame();
         document.querySelector('#overlay').style.display = 'none';
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
@@ -46,6 +47,7 @@ class Game {
      * Handels user interaction
      */
     handleInteraction (button) {
+        if(button.tagName === 'BUTTON'){
         // capture the chosen letter
         let letter = button.textContent;
         button.setAttribute('disabled', true);  
@@ -61,6 +63,7 @@ class Game {
         //check for a win
         this.checkForWin();
     }
+}
     /**
      * Check for a game win
      * @return {boolean} true for win, false for loss
@@ -107,5 +110,23 @@ class Game {
                 overlay.className = "lose"
             }
         
+    }
+    /**
+     * Reset the game board
+     */
+    resetGame(){
+        let li = document.querySelectorAll('#phrase ul li');
+        let ul = document.querySelector('#phrase ul');
+        for(ul of li ){
+            ul.remove(li);
+        }
+        let key = document.querySelectorAll('#qwerty .keyrow button');
+        for(let i = 0; i < key.length; i++){
+            key[i].removeAttribute('disabled');
+            key[i].className ='key';
+        }
+        
+        let hearts = document.querySelectorAll('.tries img');
+        hearts.forEach(life => life.src = 'images/liveHeart.png')
     }
 }
