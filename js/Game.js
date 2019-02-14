@@ -37,7 +37,7 @@ class Game {
      * starts the game
      */
     startGame(){
-        document.querySelector('#overlay').style.opacity = '0';
+        document.querySelector('#overlay').style.display = 'none';
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
     }
@@ -45,15 +45,21 @@ class Game {
     /**
      * Handels user interaction
      */
-    handleInteraction () {
+    handleInteraction (button) {
         // capture the chosen letter
+        let letter = button.textContent;
+        button.setAttribute('disabled', true);  
         // match letter against the phrase
-            //if a match display letter in phrase
-            //!== match remove a life
+        let checkedLetter = this.activePhrase.checkLetter(letter);
+        if(!checkedLetter){
+            this.removeLife();
+            button.className = 'wrong'
+        } else {
+            button.className = 'chosen'
+        }
+            
         //check for a win
-            //win if the phrase is all revealed
-            //loss if no more lives
-        //displays a win a lose message
+        this.checkForWin();
     }
     /**
      * Check for a game win
@@ -63,10 +69,8 @@ class Game {
         //check if all the letters are revealed
         let hidden = document.querySelectorAll('.hide');
         if(hidden.length === 0){
-            return true;
-        } else {
-            return false;
-        }
+            this.gameOver();
+        } 
     }
     /**
      * Removes a life from the life counter
@@ -75,14 +79,11 @@ class Game {
         // increment this.missed by one
         this.missed += 1;
         // changes heart image
-        let lives = document.querySelectorAll('.tries img');
-        if(this.missed < 5){
-            lives[(this.missed - 1)].src = 'images/lostHeart.png'
-        } else {
+        let hearts = document.querySelectorAll('.tries img');
+        hearts[this.missed -1].src = 'images/lostHeart.png';
+        if(this.missed === 5){
             this.gameOver();
         }
-        
-        
         
     }
     /**
@@ -95,7 +96,7 @@ class Game {
         let msg = document.querySelector("#game-over-message");
         
         //displays original overlay
-        overlay.style.opacity = '1';
+        overlay.style.display = 'block';
             //depending on win or lose display apporpriate message in the h1
             //changes the overlays start class to either win or lose class
             if(phrase.length === 0){

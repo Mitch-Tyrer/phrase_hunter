@@ -28,12 +28,15 @@ class Phrase {
      * @param {string} letter - letter to be checked
      */
     checkLetter(letter){
+        let exist = false
         let phrase = this.phrase.split('');
         phrase.filter(letters => {
             if(letters === letter){
                 this.showMatchedLetter(letter);
+                exist = true;
             }
         });
+        return exist;
         
     }
     /**
