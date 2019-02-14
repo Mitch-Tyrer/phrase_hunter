@@ -40,10 +40,12 @@ h2 {
   text-transform: uppercase;
   font-size: var(--font-size-large);
   margin: 0;
+  font-family: 'Patrick Hand', cursive;
 }
 
 h1 {
   font-size: 30px;
+  font-family: 'Patrick Hand', cursive;
 }
 
 button {
