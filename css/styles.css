@@ -60,6 +60,7 @@ button {
   -o-transition: var(--transition);
   transition: var(--transition);
   cursor: pointer;
+  outline: none;
 }
 
 #btn__reset {
